@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package tuninglogbook;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 /**
  * Holds all of the rows
@@ -11,6 +15,7 @@ import java.util.ArrayList;
  */
 public class LogData {
     ArrayList<RowElement> rows;
+    String fileDirectory;
     
     /**
      * Instantiates a LogData object using an ArrayList of previously instantiated rows
@@ -52,7 +57,35 @@ public class LogData {
     /**
      * Saves each row element into a file
      */
-    public void saveLogData(){
+    public void saveLogData(String filename) throws Exception{
         //TODO: Figure out file system
+        
+        File fout = new File(fileDirectory + File.separator + filename + ".logbook");
+        fout.mkdirs();
+        fout.createNewFile();
+        
+        FileOutputStream fos = new FileOutputStream(fout);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+
+        
+        for (RowElement row : rows) {
+            String tags = "";
+            bw.write(row.getName() + "⨁" + row.getTime() + "⨁" + row.getEvent() + "⨁" + row.getNotes() + "⨁");
+            for(float value : row.getSetup().setupData){
+                bw.write(value + " ");
+            }
+            bw.newLine();
+        }
+        bw.close();  
+    }
+    
+    public void setFileDirectory(){ //TODO: Learn the correct file directory for this to be saved
+        if(Util.getOS() == "WINDOWS"){
+            fileDirectory = "C:" + File.separator + "Program Files" + File.separator + "DataAnalyzer" + File.separator +"Log Book";
+        }else if(Util.getOS() == "MAC"){
+            fileDirectory = "Applications" + File.separator + "DataAnalyzer" + File.separator +"Log Book";
+        }else if(Util.getOS() == "LINUX"){
+            fileDirectory = File.separator + "run" + File.separator + "DataAnalyzer" + File.separator +"Log Book";
+        }
     }
 }
