@@ -61,15 +61,11 @@ public class LogData {
         //TODO: Figure out file system
         
         File fout = new File(fileDirectory + File.separator + filename + ".logbook");
-        fout.mkdirs();
-        fout.createNewFile();
         
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-        
         for (RowElement row : rows) {
-            String tags = "";
             bw.write(row.getName() + "⨁" + row.getTime() + "⨁" + row.getEvent() + "⨁" + row.getNotes() + "⨁");
             for(float value : row.getSetup().setupData){
                 bw.write(value + " ");
