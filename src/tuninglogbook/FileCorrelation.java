@@ -13,15 +13,16 @@ import java.time.temporal.ChronoUnit;
 
 /**
  *
- * @author haris
+ * @author Hareesh Parchuri
  */
 public class FileCorrelation {
 
-    public static String findFileAtTime(String inputTimeString) {
-        // Pass a datetime string in iso format
+    public static String findFileAtTime(RowElement inputRowElem)  {
+        // Pass a Row Element with the time attribute
+        // Parses the ISO formatted datetime
         // Example: "2019-04-14T12-01-15-507944"
         // Also works with colons instead of hyphens
-        // Returns the filename as a string, or "file not found"
+        // Returns the filename as a string, or "Filenotfound"
 
         // TODO:
         // Associate a whole list of records to files
@@ -29,7 +30,7 @@ public class FileCorrelation {
         
         
         //String inputTimeString = "2019-04-14T12-01-15-507944";
-        LocalDateTime time = dateTimeParser(inputTimeString);
+        LocalDateTime time = dateTimeParser(inputRowElem.getTime());
 
         File directory = new File("TestingDay4-17/");
         //System.out.println(directory.isDirectory());
