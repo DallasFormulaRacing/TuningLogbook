@@ -1,10 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tuninglogbook;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 /**
  *
  * @author aribdhuka
@@ -14,10 +18,31 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Creates new form MainWindow
      */
+    Log entry;
+    ArrayList<Log> list;     
+    ArrayList<rowPanel> panels;
+    rowPanel panel;
+    
     public MainWindow() {
+        
+        /* //Would work if I didn't have jPanel1
         initComponents();
-    }
+        panel = new rowPanel();
+        this.getContentPane().setLayout(new BorderLayout()); 
+        jScrollPane1.setViewportView(jPanel1);
+        */
+                
+        initComponents();
+        panel = new rowPanel();   
+        jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
+        list = new ArrayList<>(); 
 
+        jPanel1.add(panel);
+        jScrollPane1.setViewportView(jPanel1); 
+        jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,22 +52,72 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nextEntryBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        nextEntryBtn.setText("Next Entry");
+        nextEntryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextEntryBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 966, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 919, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(nextEntryBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(nextEntryBtn)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nextEntryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEntryBtnActionPerformed
+        entry = panel.getEntry();     
+        System.out.println(entry);        
+        list.add(entry);      
+        
+        panel = new rowPanel(); 
+        jPanel1.add(panel);
+        
+        jScrollPane1.setViewportView(jPanel1); 
+        jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);      
+                
+    }//GEN-LAST:event_nextEntryBtnActionPerformed
+       
     /**
      * @param args the command line arguments
      */
@@ -73,11 +148,17 @@ public class MainWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow().setVisible(true);
+                new MainWindow().setVisible(true); 
+                
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nextEntryBtn;
     // End of variables declaration//GEN-END:variables
 }
