@@ -19,7 +19,7 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     Log entry;
-    ArrayList<Log> list;     
+    LogData logData;     
     ArrayList<rowPanel> panels;
     rowPanel panel;
     
@@ -36,7 +36,7 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         panel = new rowPanel();   
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
-        list = new ArrayList<>(); 
+        logData = new LogData(); 
 
         jPanel1.add(panel);
         jScrollPane1.setViewportView(jPanel1); 
@@ -109,7 +109,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void nextEntryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextEntryBtnActionPerformed
         entry = panel.getEntry();     
         System.out.println(entry);        
-        list.add(entry);      
+        logData.addRow(entry);      
         
         panel = new rowPanel(); 
         jPanel1.add(panel);
