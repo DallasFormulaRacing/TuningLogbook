@@ -1,7 +1,7 @@
 package tuninglogbook;
 import java.util.*;
 /**
- *
+ * This class holds the information for a row
  * @author mauri
  */
 public class Log {
@@ -9,7 +9,7 @@ public class Log {
     private String time;
     private String event;
     private String notes;
-    //private Setup set;
+    private Setup set;
     
     public Log(){ //constructor
         name = "";
@@ -23,6 +23,7 @@ public class Log {
         time = t;
         event = e;
         notes = nts;
+        this.set = set;
     }
     
     //mutators

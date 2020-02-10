@@ -23,6 +23,7 @@ public class MainWindow extends javax.swing.JFrame {
     ArrayList<rowPanel> panels;
     rowPanel panel;
     
+    
     public MainWindow() {
         
         /* //Would work if I didn't have jPanel1

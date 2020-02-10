@@ -12,7 +12,7 @@ public class Setup {
     public float FRLSR = 0.0f; //3 - front right low speed rebound
     public float FLHSC = 0.0f; //4 - front left high speed compression
     public float FLHSR = 0.0f; //5 - front left high speed rebound
-    public float FLLSC = 0.0f; //6 - front left low speec compression
+    public float FLLSC = 0.0f; //6 - front left low speed compression
     public float FLLSR = 0.0f; //7 - front left low speed rebound
     public float RRHSC = 0.0f; //8 - rear right high speed compression
     public float RRHSR = 0.0f; //9 - rear right high speed rebound

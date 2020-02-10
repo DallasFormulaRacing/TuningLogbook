@@ -17,7 +17,7 @@ import java.time.temporal.ChronoUnit;
  */
 public class FileCorrelation {
 
-    public static String findFileAtTime(RowElement inputRowElem)  {
+    public static String findFileAtTime(Log inputRowElem)  {
         // Pass a Row Element with the time attribute
         // Parses the ISO formatted datetime
         // Example: "2019-04-14T12-01-15-507944"

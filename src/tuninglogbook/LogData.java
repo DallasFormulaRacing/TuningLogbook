@@ -14,26 +14,26 @@ import java.util.ArrayList;
  * @author Nolan Davenport
  */
 public class LogData {
-    ArrayList<RowElement> rows;
+    ArrayList<Log> rows;
     String fileDirectory;
     
     /**
      * Instantiates a LogData object using an ArrayList of previously instantiated rows
      * @param rows rows to be added
      */
-    public LogData(ArrayList<RowElement> rows){
+    public LogData(ArrayList<Log> rows){
         this.rows = rows;
     }
     
     public LogData(){
-        rows = new ArrayList<RowElement>();
+        rows = new ArrayList<Log>();
     }
     
     /**
      * Adds a new RowElement to the rows ArrayList
      * @param row row to be added
      */
-    public void addRow(RowElement row){
+    public void addRow(Log row){
         rows.add(row);
     }
     
@@ -50,7 +50,7 @@ public class LogData {
      * @param index index of desired RowElement
      * @return RowElement at the index
      */
-    public RowElement getRow(int index){
+    public Log getRow(int index){
         return rows.get(index);
     }
     
@@ -65,7 +65,7 @@ public class LogData {
         FileOutputStream fos = new FileOutputStream(fout);
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-        for (RowElement row : rows) {
+        for (Log row : rows) {
             bw.write(row.getName() + "⨁" + row.getTime() + "⨁" + row.getEvent() + "⨁" + row.getNotes() + "⨁");
             for(float value : row.getSetup().setupData){
                 bw.write(value + " ");
