@@ -66,5 +66,9 @@ public class Log {
              + "Event: " + event + "\n"
              + "Notes: " + notes + "\n";
     }
+    
+    public Setup getSetup(){
+        return set;
+    }
         
 }
