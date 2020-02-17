@@ -7,6 +7,7 @@ package tuninglogbook;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.awt.Color;
 
 /**
  *
@@ -60,6 +61,7 @@ public class rowPanel extends javax.swing.JPanel {
         notesTA = new javax.swing.JTextArea();
         setupLB = new javax.swing.JLabel();
         setupBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(1000, 300));
 
@@ -69,11 +71,33 @@ public class rowPanel extends javax.swing.JPanel {
 
         eventLB.setText("Event");
 
+        nameTF.setForeground(new java.awt.Color(153, 153, 153));
         nameTF.setText("Enter Name");
+        nameTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nameTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nameTFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nameTFFocusLost(evt);
+            }
+        });
 
+        timeTF.setForeground(new java.awt.Color(153, 153, 153));
         timeTF.setText("Enter Time");
+        timeTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                timeTFFocusGained(evt);
+            }
+        });
 
+        eventTF.setForeground(new java.awt.Color(153, 153, 153));
         eventTF.setText("Enter Event");
+        eventTF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                eventTFFocusGained(evt);
+            }
+        });
 
         currTimeLB.setText("Get Current Time");
 
@@ -87,8 +111,14 @@ public class rowPanel extends javax.swing.JPanel {
         notesLB.setText(" Notes");
 
         notesTA.setColumns(20);
+        notesTA.setForeground(new java.awt.Color(153, 153, 153));
         notesTA.setRows(5);
         notesTA.setText("Add Some Notes about the event\n");
+        notesTA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                notesTAFocusGained(evt);
+            }
+        });
         jScrollPane1.setViewportView(notesTA);
 
         setupLB.setText("Setup");
@@ -105,37 +135,43 @@ public class rowPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(nameLB)))
+                        .addComponent(nameLB)
+                        .addGap(95, 95, 95)
+                        .addComponent(timeLB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(currentTimeBtn)
-                        .addGap(50, 50, 50)
-                        .addComponent(eventTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(timeLB)
-                        .addGap(69, 69, 69)
                         .addComponent(currTimeLB)
                         .addGap(59, 59, 59)
                         .addComponent(eventLB)
                         .addGap(122, 122, 122)
-                        .addComponent(notesLB)))
-                .addGap(40, 40, 40)
+                        .addComponent(notesLB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(currentTimeBtn)
+                        .addGap(52, 52, 52)
+                        .addComponent(eventTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(setupBtn)
-                    .addComponent(setupLB))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(setupBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(setupLB)))
+                .addGap(0, 189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,20 +193,46 @@ public class rowPanel extends javax.swing.JPanel {
                         .addComponent(currentTimeBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(setupBtn))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void currentTimeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentTimeBtnActionPerformed
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         String time = s.format(Calendar.getInstance().getTime());
-        timeTF.setText(time);
-        //entry.setTime(time);         
+        timeTF.setForeground(new java.awt.Color(0,0,0));
+        timeTF.setText(time);                 
     }//GEN-LAST:event_currentTimeBtnActionPerformed
 
     private void setupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setupBtnActionPerformed
-        // TODO add your handling code here:
+        new SetupWindow().setVisible(true);
     }//GEN-LAST:event_setupBtnActionPerformed
+
+    private void nameTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameTFFocusGained
+        nameTF.setText("");
+        nameTF.setForeground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_nameTFFocusGained
+
+    private void timeTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_timeTFFocusGained
+        timeTF.setText("");
+        timeTF.setForeground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_timeTFFocusGained
+
+    private void eventTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eventTFFocusGained
+        eventTF.setText("");
+        eventTF.setForeground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_eventTFFocusGained
+
+    private void notesTAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_notesTAFocusGained
+        notesTA.setText("");
+        notesTA.setForeground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_notesTAFocusGained
+
+    private void nameTFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameTFFocusLost
+        nameTF.setText(nameTF.getText());
+    }//GEN-LAST:event_nameTFFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -179,6 +241,7 @@ public class rowPanel extends javax.swing.JPanel {
     private javax.swing.JLabel eventLB;
     private javax.swing.JTextField eventTF;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nameLB;
     private javax.swing.JTextField nameTF;
     private javax.swing.JLabel notesLB;

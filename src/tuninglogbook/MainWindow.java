@@ -5,13 +5,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 /**
  *
- * @author aribdhuka
+ * @author mauri
  */
 public class MainWindow extends javax.swing.JFrame {
 
@@ -19,29 +18,20 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     Log entry;
-    LogData logData;     
-    ArrayList<rowPanel> panels;
+    LogData logData;         
     rowPanel panel;
     
     
-    public MainWindow() {
-        
-        /* //Would work if I didn't have jPanel1
-        initComponents();
-        panel = new rowPanel();
-        this.getContentPane().setLayout(new BorderLayout()); 
-        jScrollPane1.setViewportView(jPanel1);
-        */
-                
+    public MainWindow() {         
         initComponents();
         panel = new rowPanel();   
-        jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));
-        logData = new LogData(); 
-
+        jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));        
         jPanel1.add(panel);
+                        
         jScrollPane1.setViewportView(jPanel1); 
         jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);
         
+        logData = new LogData();         
     }
     
     /**
@@ -58,6 +48,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         nextEntryBtn.setText("Next Entry");
         nextEntryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -66,15 +57,17 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(902, 921));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 966, Short.MAX_VALUE)
+            .addGap(0, 981, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
+            .addGap(0, 921, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -84,23 +77,17 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(nextEntryBtn))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                .addContainerGap(915, Short.MAX_VALUE)
+                .addComponent(nextEntryBtn))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(nextEntryBtn)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         pack();
