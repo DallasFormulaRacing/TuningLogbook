@@ -75,6 +75,8 @@ public class LogData {
         bw.close();  
     }
     
+    //TODO: Create a loadLogData method
+    
     public void setFileDirectory(){ //TODO: Learn the correct file directory for this to be saved
         if(Util.getOS() == "WINDOWS"){
             fileDirectory = "C:" + File.separator + "Program Files" + File.separator + "DataAnalyzer" + File.separator +"Log Book";
