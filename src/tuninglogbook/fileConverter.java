@@ -1,10 +1,14 @@
+package tuninglogbook;
+
+
+
 public class fileConverter {
 	
 	CategoricalHashMap dataMap = new CategoricalHashMap();
 	
 	String fileNotes;
 	
-	public static void convertFile(String filepath, String filename, String fileNotes) {
+	public void convertFile(String filepath, String filename, String fileNotes) {
 		CategoricalHashTable<CategorizedValueMarker> staticMarkers = new CategoricalHashTable<>();
 		TXTParser.parse(dataMap, staticMarkers, filepath, 0);
 		saveFile(filename, fileNotes);
