@@ -10,14 +10,16 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 /**
  *
  * @author Hareesh Parchuri
  */
 public class FileCorrelation {
+    
 
-    public static String findFileAtTime(Log inputRowElem)  {
+    public static String findFileAtTime(ArrayList<Log> rowElemList)  {
         // Pass a Row Element with the time attribute
         // Parses the ISO formatted datetime
         // Example: "2019-04-14T12-01-15-507944"
@@ -28,6 +30,9 @@ public class FileCorrelation {
         // Associate a whole list of records to files
         // Return a filename and the corresponding row element
         
+        ArrayList<FileLogPair> fileLogPairs = new ArrayList<>();
+        
+        Log inputRowElem = rowElemList.get(0);
         
         //String inputTimeString = "2019-04-14T12-01-15-507944";
         LocalDateTime time = dateTimeParser(inputRowElem.getTime());
@@ -99,5 +104,24 @@ public class FileCorrelation {
         }
 
         return dateTime;
+    }
+    
+    private class FileLogPair {
+        private File file;
+        private Log log;
+        
+        FileLogPair(File f, Log l){
+            file = f;
+            log = l;
+        }
+        
+        public File getFile(){
+            return file;
+        }
+        
+        public Log getLog(){
+            return log;
+        }
+        
     }
 }
