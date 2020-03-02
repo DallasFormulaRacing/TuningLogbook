@@ -5,8 +5,11 @@
  */
 package tuninglogbook;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 /**
@@ -23,10 +26,13 @@ public class LogData {
      */
     public LogData(ArrayList<Log> rows){
         this.rows = rows;
+        setFileDirectory();
     }
     
     public LogData(){
         rows = new ArrayList<Log>();
+        setFileDirectory();
+
     }
     
     /**
@@ -75,23 +81,32 @@ public class LogData {
         bw.close();  
     }
     
-    //TODO: Create a loadLogData method
     public void loadLogData(String filename) throws Exception{
-        File fout = new File(fileDirectory + File.separator + filename + ".logbook");
+        //TODO: Figure out file system
         
-        FileOutputStream fos = new FileOutputStream(fout);
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-
-        for (Log row : rows) {
-            bw.write(row.getName() + "⨁" + row.getTime() + "⨁" + row.getEvent() + "⨁" + row.getNotes() + "⨁");
-            for(float value : row.getSetup().setupData){
-                bw.write(value + " ");
-            }
-            bw.newLine();
+        File fin = new File(filename);
+        
+        FileInputStream fis = new FileInputStream(fin);
+        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+        
+        ArrayList<String> rowStrings = new ArrayList<String>();
+        
+        String line;
+        while ((line = br.readLine()) != null) {
+            rowStrings.add(line);
         }
-        bw.close();  
+        br.close();  
+        
+        for(String rowString : rowStrings){
+            String[] rowData = rowString.split("⨁");
+            Log tempLog = new Log();
+            tempLog.setName(rowData[0]);
+            tempLog.setTime(rowData[1]);
+            tempLog.setEvent(rowData[2]);
+            tempLog.setNotes(rowData[3]);
+            rows.add(tempLog);
+        }
     }
-    
     public void setFileDirectory(){ //TODO: Learn the correct file directory for this to be saved
         if(Util.getOS() == "WINDOWS"){
             fileDirectory = "C:" + File.separator + "Program Files" + File.separator + "DataAnalyzer" + File.separator +"Log Book";
