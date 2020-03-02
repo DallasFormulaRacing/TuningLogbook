@@ -21,10 +21,13 @@ public class rowPanel extends javax.swing.JPanel {
     
     //Some variables to instantiate
     Log entry;
+    LogData logData;
     
-    public rowPanel() {
+    public rowPanel(LogData log) {
         initComponents();
         entry = new Log();
+        logData = log; 
+        
     }
     
     public Log getEntry(){ 

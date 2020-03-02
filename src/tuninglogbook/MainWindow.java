@@ -24,7 +24,8 @@ public class MainWindow extends javax.swing.JFrame {
     
     public MainWindow() {         
         initComponents();
-        panel = new rowPanel();   
+        panel = new rowPanel(logData); 
+        
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));        
         jPanel1.add(panel);
                         
@@ -48,7 +49,6 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         nextEntryBtn.setText("Next Entry");
         nextEntryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -56,8 +56,6 @@ public class MainWindow extends javax.swing.JFrame {
                 nextEntryBtnActionPerformed(evt);
             }
         });
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(902, 921));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,7 +96,7 @@ public class MainWindow extends javax.swing.JFrame {
         System.out.println(entry);        
         logData.addRow(entry);      
         
-        panel = new rowPanel(); 
+        panel = new rowPanel(logData); 
         jPanel1.add(panel);
         
         jScrollPane1.setViewportView(jPanel1); 
