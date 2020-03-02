@@ -29,13 +29,7 @@ public class SetupWindow extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-<<<<<<< Updated upstream
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-=======
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setText("This is the setup window");
->>>>>>> Stashed changes
 
         jLabel1.setText("Setup window temporary");
 
@@ -44,28 +38,16 @@ public class SetupWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< Updated upstream
                 .addGap(137, 137, 137)
                 .addComponent(jLabel1)
                 .addContainerGap(143, Short.MAX_VALUE))
-=======
-                .addGap(127, 127, 127)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
->>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< Updated upstream
                 .addGap(106, 106, 106)
                 .addComponent(jLabel1)
                 .addContainerGap(180, Short.MAX_VALUE))
-=======
-                .addGap(124, 124, 124)
-                .addComponent(jLabel1)
-                .addContainerGap(162, Short.MAX_VALUE))
->>>>>>> Stashed changes
         );
 
         pack();

@@ -13,18 +13,16 @@ import java.awt.*;
  * @author mauri
  */
 public class MainWindow extends javax.swing.JFrame {
-   
+
+    /**
+     * Creates new form MainWindow
+     */
     Log entry;
     LogData logData;         
     rowPanel panel;
     
     
-<<<<<<< Updated upstream
     public MainWindow() {         
-=======
-    public MainWindow() {
-                               
->>>>>>> Stashed changes
         initComponents();
         panel = new rowPanel();   
         jPanel1.setLayout(new BoxLayout(jPanel1, BoxLayout.Y_AXIS));        

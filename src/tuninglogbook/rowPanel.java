@@ -73,20 +73,14 @@ public class rowPanel extends javax.swing.JPanel {
 
         nameTF.setForeground(new java.awt.Color(153, 153, 153));
         nameTF.setText("Enter Name");
-<<<<<<< Updated upstream
         nameTF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-=======
->>>>>>> Stashed changes
         nameTF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 nameTFFocusGained(evt);
             }
-<<<<<<< Updated upstream
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nameTFFocusLost(evt);
             }
-=======
->>>>>>> Stashed changes
         });
 
         timeTF.setForeground(new java.awt.Color(153, 153, 153));
@@ -141,7 +135,6 @@ public class rowPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< Updated upstream
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator1)
                 .addContainerGap())
@@ -179,37 +172,6 @@ public class rowPanel extends javax.swing.JPanel {
                         .addGap(77, 77, 77)
                         .addComponent(setupLB)))
                 .addGap(0, 189, Short.MAX_VALUE))
-=======
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLB)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLB)
-                    .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(currentTimeBtn)
-                    .addComponent(currTimeLB))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eventLB)
-                    .addComponent(eventTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(notesLB)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(setupLB)
-                    .addComponent(setupBtn))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
->>>>>>> Stashed changes
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,15 +193,9 @@ public class rowPanel extends javax.swing.JPanel {
                         .addComponent(currentTimeBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(setupBtn))
-<<<<<<< Updated upstream
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
->>>>>>> Stashed changes
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -256,34 +212,21 @@ public class rowPanel extends javax.swing.JPanel {
 
     private void nameTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameTFFocusGained
         nameTF.setText("");
-<<<<<<< Updated upstream
         nameTF.setForeground(new java.awt.Color(0,0,0));
-=======
-        nameTF.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> Stashed changes
     }//GEN-LAST:event_nameTFFocusGained
 
     private void timeTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_timeTFFocusGained
         timeTF.setText("");
-<<<<<<< Updated upstream
         timeTF.setForeground(new java.awt.Color(0,0,0));
-=======
-        timeTF.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> Stashed changes
     }//GEN-LAST:event_timeTFFocusGained
 
     private void eventTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_eventTFFocusGained
         eventTF.setText("");
-<<<<<<< Updated upstream
         eventTF.setForeground(new java.awt.Color(0,0,0));
-=======
-        eventTF.setForeground(new java.awt.Color(0, 0, 0));
->>>>>>> Stashed changes
     }//GEN-LAST:event_eventTFFocusGained
 
     private void notesTAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_notesTAFocusGained
         notesTA.setText("");
-<<<<<<< Updated upstream
         notesTA.setForeground(new java.awt.Color(0,0,0));
     }//GEN-LAST:event_notesTAFocusGained
 
@@ -291,11 +234,6 @@ public class rowPanel extends javax.swing.JPanel {
         nameTF.setText(nameTF.getText());
     }//GEN-LAST:event_nameTFFocusLost
 
-=======
-        notesTA.setForeground(new java.awt.Color(0, 0, 0));
-    }//GEN-LAST:event_notesTAFocusGained
-
->>>>>>> Stashed changes
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel currTimeLB;
