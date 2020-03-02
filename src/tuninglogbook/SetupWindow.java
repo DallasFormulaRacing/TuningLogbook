@@ -5,12 +5,14 @@
  */
 package tuninglogbook;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  *
  * @author Nolan
  */
 public class SetupWindow extends JFrame{
     LogData logData;
+    JPanel setupPanel;
     public SetupWindow(LogData logData){
         this.logData = logData;
         
@@ -20,7 +22,7 @@ public class SetupWindow extends JFrame{
         this.setSize(300,300);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        //TODO: Make the scroll wheel and panel and then add them to the frame
     }
-    
-    
 }
