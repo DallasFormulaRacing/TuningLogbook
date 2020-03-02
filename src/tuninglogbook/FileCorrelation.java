@@ -11,43 +11,82 @@ import java.util.regex.Pattern;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
  * @author Hareesh Parchuri
  */
 public class FileCorrelation {
+    ArrayList<FileLogPair> fileLogPairs;
+    ArrayList<File> fileList;
+    ArrayList<Log> notFound;
+    int buffer;
+    File directory;
     
+    // Constructor sets directory of files to be correlated
+    public FileCorrelation(){
+        directory =  new File("TestingDay4-17/");
+        
+        init();
+    }
+    
+    public FileCorrelation(String d){
+        directory = new File(d);
+        
+        init();
+    }
+    
+    private void init() {
+        fileList = (ArrayList) Arrays.asList(directory.listFiles());
 
-    public static String findFileAtTime(ArrayList<Log> rowElemList)  {
+        buffer = findBuffer(fileList);
+
+        fileLogPairs = new ArrayList<>();
+        
+        notFound = new ArrayList<>();
+    }
+
+    public String findFilesAtTimes(LogData rowElemList) {
         // Pass a Row Element with the time attribute
         // Parses the ISO formatted datetime
         // Example: "2019-04-14T12-01-15-507944"
         // Also works with colons instead of hyphens
         // Returns the filename as a string, or "Filenotfound"
-
         // TODO:
         // Associate a whole list of records to files
         // Return a filename and the corresponding row element
+
+        rowElemList.rows.forEach((row) -> {
+            int returnCode = associateRow(row);
+            if(returnCode == -1){
+                notFound.add(row);
+            }
+        });
         
-        ArrayList<FileLogPair> fileLogPairs = new ArrayList<>();
         
-        Log inputRowElem = rowElemList.get(0);
+        //Log inputRowElem = rowElemList.getRow(0);
         
         //String inputTimeString = "2019-04-14T12-01-15-507944";
-        LocalDateTime time = dateTimeParser(inputRowElem.getTime());
+        //LocalDateTime time = dateTimeParser(inputRowElem.getTime());
 
-        File directory = new File("TestingDay4-17/");
+        //File directory = new File("TestingDay4-17/");
         //System.out.println(directory.isDirectory());
-        File[] fileList = directory.listFiles();
+        //File[] fileList = directory.listFiles();
 
-        int buffer = findBuffer(fileList);
+        if(!notFound.isEmpty()){
+            return "Not all rows associated";
+        }
+        else{
+            return "Done";
+        }
 
-        //System.out.println(buffer);
-
-        /*System.out.println(ChronoUnit.SECONDS.between(
-                dateTimeParser(fileList[2].getName()),
-                dateTimeParser(fileList[1].getName())));*/
+        //return "Filenotfound";
+    }
+    
+    int associateRow(Log rowElem){
+        
+        LocalDateTime time = dateTimeParser(rowElem.getTime());
         
         for (File file : fileList) {
             String currentFilename = file.getName();
@@ -55,22 +94,24 @@ public class FileCorrelation {
             LocalDateTime thisTime = dateTimeParser(currentFilename);
 
             if (Math.abs(ChronoUnit.SECONDS.between(time, thisTime)) < buffer) {
-                return currentFilename;
+                fileLogPairs.add(new FileLogPair(file, rowElem));
+                //fileList.remove(file);
+                return 0;
             }
         }
-        return "Filenotfound";
+        return -1;
     }
 
-    static int findBuffer(File[] fileList) {
+    static int findBuffer(ArrayList<File> fileList) {
 
         long smallestGap = ChronoUnit.SECONDS.between(
-                dateTimeParser(fileList[0].getName()),
-                dateTimeParser(fileList[1].getName()));
+                dateTimeParser(fileList.get(0).getName()),
+                dateTimeParser(fileList.get(1).getName()));
 
-        for (int i = 1, j = 2; j < fileList.length; i++, j++) {
+        for (int i = 1, j = 2; j < fileList.size(); i++, j++) {
             long thisGap = ChronoUnit.SECONDS.between(
-                    dateTimeParser(fileList[i].getName()),
-                    dateTimeParser(fileList[j].getName()));
+                    dateTimeParser(fileList.get(i).getName()),
+                    dateTimeParser(fileList.get(j).getName()));
 
             if (thisGap < smallestGap) {
                 smallestGap = thisGap;
@@ -106,9 +147,11 @@ public class FileCorrelation {
         return dateTime;
     }
     
+
+    
     private class FileLogPair {
-        private File file;
-        private Log log;
+        private final File file;
+        private final Log log;
         
         FileLogPair(File f, Log l){
             file = f;
@@ -121,6 +164,11 @@ public class FileCorrelation {
         
         public Log getLog(){
             return log;
+        }
+        
+        @Override
+        public String toString(){
+            return file.getName() + " " + log.getName();
         }
         
     }
