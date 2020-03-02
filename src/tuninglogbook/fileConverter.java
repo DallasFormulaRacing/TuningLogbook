@@ -62,7 +62,7 @@ public class fileConverter {
         }
         
         String chosenFileName = "";
-        try(FileWriter fw = new FileWriter(fileName + ".dfr")) {
+        try(FileWriter fw = new FileWriter(chosenFileName + ".dfr")) {
             //write the data
             fw.write(sb.toString());
             //close the file writer
