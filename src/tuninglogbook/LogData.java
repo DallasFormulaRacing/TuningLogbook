@@ -76,6 +76,21 @@ public class LogData {
     }
     
     //TODO: Create a loadLogData method
+    public void loadLogData(String filename) throws Exception{
+        File fout = new File(fileDirectory + File.separator + filename + ".logbook");
+        
+        FileOutputStream fos = new FileOutputStream(fout);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+
+        for (Log row : rows) {
+            bw.write(row.getName() + "⨁" + row.getTime() + "⨁" + row.getEvent() + "⨁" + row.getNotes() + "⨁");
+            for(float value : row.getSetup().setupData){
+                bw.write(value + " ");
+            }
+            bw.newLine();
+        }
+        bw.close();  
+    }
     
     public void setFileDirectory(){ //TODO: Learn the correct file directory for this to be saved
         if(Util.getOS() == "WINDOWS"){
