@@ -20,6 +20,7 @@ public class MainWindow extends javax.swing.JFrame {
     Log entry;
     LogData logData;         
     rowPanel panel;
+    Setup setup;
     
     
     public MainWindow() {         
@@ -32,7 +33,8 @@ public class MainWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel1); 
         jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);
         
-        logData = new LogData();         
+        logData = new LogData();   
+        setup = new Setup();
     }
     
     /**
