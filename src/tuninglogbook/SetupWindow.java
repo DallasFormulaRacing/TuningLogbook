@@ -15,9 +15,9 @@ import java.util.*;
 public class SetupWindow extends JFrame{
     LogData logData;
     JPanel setupPanel;
+    JFrame helpFrame;
     public SetupWindow(LogData logData){
-        this.logData = logData;
-        
+        this.logData = logData;        
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);
         this.setAlwaysOnTop(false);
@@ -76,8 +76,8 @@ public class SetupWindow extends JFrame{
             tempLabel.setHorizontalAlignment(SwingConstants.CENTER);
             labels.add(tempLabel);
             JSlider temp = new JSlider(JSlider.HORIZONTAL, -10,10,0);
-            temp.setMinorTickSpacing(2);  
-            temp.setMajorTickSpacing(10);  
+            temp.setMinorTickSpacing(1);  
+            temp.setMajorTickSpacing(5);  
             temp.setPaintTicks(true);  
             temp.setPaintLabels(true);  
             sliders.add(temp);
@@ -95,7 +95,7 @@ public class SetupWindow extends JFrame{
         
         helpButton.addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                //TODO: Make a help menu
+                openHelpFrame();
             } 
         });
         
@@ -103,15 +103,91 @@ public class SetupWindow extends JFrame{
         
         closeButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                this.setVisible(false);
-                dispose();
+               closeWindow();
             }    
         });
+        
         JButton submitButton = new JButton("Submit");
+        
+        submitButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+               submitSetup();
+            }    
+        });
         
         this.add(helpButton);
         this.add(closeButton);
         this.add(submitButton);
         
+    }
+    
+    public void openHelpFrame(){
+        helpFrame = new JFrame("Help");
+        helpFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helpFrame.setSize(300,600);
+        helpFrame.setAlwaysOnTop(true);
+        helpFrame.setAlwaysOnTop(false);
+        helpFrame.setLocationRelativeTo(null);
+        
+        String[] vehicleVariables_help = {
+            "FRHSC - front right high speed compresssion",
+            "FRHSR - front right high speed rebound",
+            "FRLSC - front right low speed compression",
+            "FRLSR - front right low speed rebound",
+            "FLHSC - front left high speed compression",
+            "FLHSR - front left high speed rebound",
+            "FLLSC - front left low speed compression",
+            "FLLSR - front left low speed rebound",
+            "RRHSC - rear right high speed compression",
+            "RRHSR - rear right high speed rebound",
+            "RRLSC - rear right low speed compression",
+            "RRLSR - rear right low speed rebound",
+            "RLHSC - rear left high speed compression",
+            "RLHSR - rear left high speed rebound",
+            "RLLSC - rear left low speed compression",
+            "RLLSR - rear left low speed rebound",
+            "FARB - front anti roll bar",
+            "RARB - rear anti roll bar",
+            "FRS - front right spring",
+            "FLS - front left spring",
+            "RRS - rear right spring",
+            "RLS - rear left spring",
+            "RHF - right height front",
+            "RHR - right height rear",
+            "CF - camber front",
+            "CR - camber rear",
+            "TF - toe front",
+            "TR - toe rear",
+            "AA - ackermann angle",
+            "TPFR - tire pressure front right",
+            "TPFL - tire pressure front left",
+            "TPRR - tire pressure rear right",
+            "TPRL - tire pressure rear left",
+            "BB - brake bias"
+        };
+        
+        GridLayout layout = new GridLayout(0,1);
+        helpFrame.setLayout(layout);
+        
+        ArrayList<JLabel> helpLabels = new ArrayList<JLabel>();
+        
+        for(int i = 0; i < 34; i++){
+            helpLabels.add(new JLabel("   "+vehicleVariables_help[i]));
+            helpFrame.add(helpLabels.get(i));
+        }
+        
+        helpFrame.setVisible(true);        
+    }
+    
+    public void closeWindow(){
+        this.setVisible(false);
+        this.dispose();
+    }
+    
+    public void submitSetup(){
+        //TODO: Figure out code for submitting the setup
+        System.out.println("Submitted the setup");
+        
+        closeWindow();
     }
 }
