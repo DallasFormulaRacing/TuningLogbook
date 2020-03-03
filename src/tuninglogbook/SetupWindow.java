@@ -25,20 +25,25 @@ public class SetupWindow extends JFrame{
         this.setVisible(true);
         
         //TODO: Make the scroll wheel and panel and then add them to the frame
-        GridLayout layout = new GridLayout(1,0,0,2);
-        setupPanel.setLayout(layout);
-        JButton temp1 = new JButton("temp1");
-        JButton temp2 = new JButton("temp2");
-        JButton temp3 = new JButton("temp3");
-        JButton temp4 = new JButton("temp4");
-        JButton temp5 = new JButton("temp5");
+        GridLayout layout = new GridLayout(0,2);
+        this.setLayout(layout);
+        JLabel label1 = new JLabel("temp1");
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        JSlider temp1 = new JSlider(JSlider.HORIZONTAL, -10,10,0);
+        JLabel label2 = new JLabel("temp2");
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        JSlider temp2 = new JSlider(JSlider.HORIZONTAL, -10,10,0);
+        JSlider temp3 = new JSlider(JSlider.HORIZONTAL, -10,10,0);
+        JSlider temp4 = new JSlider(JSlider.HORIZONTAL, -10,10,0);
+        JSlider temp5 = new JSlider(JSlider.HORIZONTAL, -10,10,0);
 
-        setupPanel.add(temp1);
-        setupPanel.add(temp2);
-        setupPanel.add(temp3);
-        setupPanel.add(temp4);
-        setupPanel.add(temp5);
-        this.add(setupPanel);
+        this.add(label1);
+        this.add(temp1);
+        this.add(label2);
+        this.add(temp2);
+        this.add(temp3);
+        this.add(temp4);
+        this.add(temp5);
         
     }
 }
