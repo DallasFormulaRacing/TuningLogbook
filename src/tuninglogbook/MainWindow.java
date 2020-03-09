@@ -51,8 +51,12 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
 
         nextEntryBtn.setText("Next Entry");
+        nextEntryBtn.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nextEntryBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        nextEntryBtn.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         nextEntryBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextEntryBtnActionPerformed(evt);
@@ -63,11 +67,11 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 981, Short.MAX_VALUE)
+            .addGap(0, 996, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 921, Short.MAX_VALUE)
+            .addGap(0, 932, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -77,17 +81,16 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(915, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(nextEntryBtn))
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(nextEntryBtn)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nextEntryBtn))
         );
 
         pack();
