@@ -39,7 +39,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="timeTF" min="-2" pref="126" max="-2" attributes="0"/>
-                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Component id="currentTimeBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="timeLB" min="-2" max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
                   <Component id="setupBtn" min="-2" max="-2" attributes="0"/>
                   <Component id="setupLB" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="130" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="158" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

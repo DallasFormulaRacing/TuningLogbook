@@ -31,7 +31,9 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.add(panel);
                         
         jScrollPane1.setViewportView(jPanel1); 
+        
         jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);
+        //jScrollPane1.setAlignmentX(CENTER_ALIGNMENT);
         
         logData = new LogData();   
         setup = new Setup();
