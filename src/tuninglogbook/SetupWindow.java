@@ -7,6 +7,7 @@ package tuninglogbook;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.util.*;
 /**
  *
@@ -16,25 +17,7 @@ public class SetupWindow extends JFrame{
     LogData logData;
     JPanel setupPanel;
     JFrame helpFrame;
-    public SetupWindow(LogData logData){
-        this.logData = logData;        
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setAlwaysOnTop(true);
-        this.setAlwaysOnTop(false);
-        this.setSize(600,600);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Vehicle Setup");
-        this.setVisible(true);
-        
-        
-        //TODO: Make the scroll wheel and panel and then add them to the frame
-        ArrayList<JLabel> labels = new ArrayList<JLabel>();
-        ArrayList<JSlider> sliders = new ArrayList<JSlider>();
-        
-        GridLayout layout = new GridLayout(0,6);
-        this.setLayout(layout);
-        
-        String[] vehicleVariables = {
+    private String[] vehicleVariables = {
             "FRHSC",
             "FRHSR",
             "FRLSC",
@@ -69,23 +52,65 @@ public class SetupWindow extends JFrame{
             "TPRR",
             "TPRL",
             "BB"
-        };
+    };
+    
+    private ArrayList<Slider> sliders;
+    
+    private class Slider {
+        public JSlider slider;
+        public int index;
+        public JLabel label;
+        public Slider(JSlider slider, int index, JLabel label){
+            this.slider = slider;
+            this.index = index;
+            this.label = label;
+            
+            
+            
+            slider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                    label.setText(vehicleVariables[index] + ": " + ((JSlider)e.getSource()).getValue());
+                }
+            });
+        }
+    }
+    public SetupWindow(LogData logData){
+        this.logData = logData;        
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setAlwaysOnTop(true);
+        this.setAlwaysOnTop(false);
+        this.setSize(600,600);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Vehicle Setup");
+        this.setVisible(true);
+        
+        
+        //TODO: Make the scroll wheel and panel and then add them to the frame
+        sliders = new ArrayList<Slider>();
+        
+        GridLayout layout = new GridLayout(0,6);
+        this.setLayout(layout);
         
         for(int i = 0; i < 34; i++){
-            JLabel tempLabel = new JLabel(vehicleVariables[i]);
+            JLabel tempLabel = new JLabel(vehicleVariables[i] + ": 0");
             tempLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            labels.add(tempLabel);
             JSlider temp = new JSlider(JSlider.HORIZONTAL, -10,10,0);
             temp.setMinorTickSpacing(1);  
             temp.setMajorTickSpacing(5);  
             temp.setPaintTicks(true);  
             temp.setPaintLabels(true);  
-            sliders.add(temp);
+            //temp.addChangeListener(new ChangeListener() {
+             //   public void stateChanged(ChangeEvent e) {
+              //      
+               //     labels.get(i).setText(vehicleVariables[i] + ((JSlider)e.getSource()).getValue());
+            //    }
+            //}); 
+            sliders.add(new Slider(temp, i, tempLabel));
         }
         
         for(int i = 0; i < 34; i++){
-            this.add(labels.get(i));
-            this.add(sliders.get(i));
+            this.add(sliders.get(i).label);
+            this.add(sliders.get(i).slider);
         }
         
         // This label acts as a buffer so tha the close and submit buttons are on the bottom right. 
@@ -181,6 +206,7 @@ public class SetupWindow extends JFrame{
     
     public void closeWindow(){
         this.setVisible(false);
+        helpFrame.dispose();
         this.dispose();
     }
     
