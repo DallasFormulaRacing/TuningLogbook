@@ -100,6 +100,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         panel = new rowPanel(logData); 
         jPanel1.add(panel);
+        //panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         
         jScrollPane1.setViewportView(jPanel1); 
         jScrollPane1.setVerticalScrollBarPolicy(jScrollPane1.VERTICAL_SCROLLBAR_ALWAYS);      

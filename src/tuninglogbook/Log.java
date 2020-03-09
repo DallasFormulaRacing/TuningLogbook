@@ -16,14 +16,15 @@ public class Log {
         time = "";
         event = "";
         notes = "";
+        set = new Setup();
     }
     
-    public Log(String n, String t, String e, String nts){ //overloadedconstructor
+    public Log(String n, String t, String e, String nts, Setup s){ //overloadedconstructor
         name = n;
         time = t;
         event = e;
         notes = nts;
-        this.set = set;
+        set = s;
     }
     
     //mutators
@@ -43,6 +44,10 @@ public class Log {
         notes = nts;
     }
     
+    public void setSetup(Setup s){
+        set = s;
+    }
+    
     //accessors
     public String getName(){
         return name;
@@ -60,15 +65,15 @@ public class Log {
         return notes;
     }
     
+    public Setup getSetup(){
+        return set;
+    }
+    
     public String toString(){
         return "Name: " + name + "\n"
              + "Time: " + time + "\n"
              + "Event: " + event + "\n"
-             + "Notes: " + notes + "\n";
-    }
-    
-    public Setup getSetup(){
-        return set;
-    }
-        
+             + "Notes: " + notes + "\n"
+                + "Setup: done \n";
+    }            
 }

@@ -57,7 +57,6 @@ public class rowPanel extends javax.swing.JPanel {
         nameTF = new javax.swing.JTextField();
         timeTF = new javax.swing.JTextField();
         eventTF = new javax.swing.JTextField();
-        currTimeLB = new javax.swing.JLabel();
         currentTimeBtn = new javax.swing.JButton();
         notesLB = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -66,6 +65,7 @@ public class rowPanel extends javax.swing.JPanel {
         setupBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1000, 300));
 
         nameLB.setText("Name");
@@ -101,8 +101,6 @@ public class rowPanel extends javax.swing.JPanel {
                 eventTFFocusGained(evt);
             }
         });
-
-        currTimeLB.setText("Get Current Time");
 
         currentTimeBtn.setText("Get Time");
         currentTimeBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -142,37 +140,30 @@ public class rowPanel extends javax.swing.JPanel {
                 .addComponent(jSeparator1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLB))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLB)
-                    .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(currentTimeBtn)
-                    .addComponent(currTimeLB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(eventTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(eventLB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(notesLB)
-                        .addGap(72, 72, 72)))
+                    .addComponent(nameLB)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(setupBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(setupLB)))
-                .addGap(0, 184, Short.MAX_VALUE))
+                        .addComponent(timeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(currentTimeBtn))
+                    .addComponent(timeLB))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eventLB)
+                    .addComponent(eventTF, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(notesLB)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(setupBtn)
+                    .addComponent(setupLB))
+                .addGap(0, 130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +173,6 @@ public class rowPanel extends javax.swing.JPanel {
                     .addComponent(nameLB)
                     .addComponent(eventLB)
                     .addComponent(timeLB)
-                    .addComponent(currTimeLB)
                     .addComponent(notesLB)
                     .addComponent(setupLB))
                 .addGap(29, 29, 29)
@@ -238,7 +228,6 @@ public class rowPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel currTimeLB;
     private javax.swing.JButton currentTimeBtn;
     private javax.swing.JLabel eventLB;
     private javax.swing.JTextField eventTF;
