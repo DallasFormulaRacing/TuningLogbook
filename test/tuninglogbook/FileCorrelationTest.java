@@ -8,33 +8,33 @@ package tuninglogbook;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  *
- * @author haris
+ * @author Harish
  */
 public class FileCorrelationTest {
     
     public FileCorrelationTest() {
     }
     
-    @BeforeAll
+    @BeforeClass
     public static void setUpClass() {
     }
     
-    @AfterAll
+    @AfterClass
     public static void tearDownClass() {
     }
 
     /**
      * Test of findFilesAtTimes method, of class FileCorrelation.
      */
-    @Ignore
     @Test
     public void testFindFilesAtTimes() {
         System.out.println("findFilesAtTimes");
@@ -53,7 +53,7 @@ public class FileCorrelationTest {
     @Test
     public void testAssociateRow() {
         System.out.println("associateRow");
-        Log rowElem = new Log("log1", "2019-04-14T14-21-51-884303", "", "");
+        Log rowElem = new Log("log1", "2019-04-14T14-21-51-884303", "morning test", "car was ");
         FileCorrelation instance = new FileCorrelation();
         int expResult = 0;
         int result = instance.associateRow(rowElem);
@@ -64,28 +64,12 @@ public class FileCorrelationTest {
     }
 
     /**
-     * Test of findBuffer method, of class FileCorrelation.
-     */
-    @Ignore
-    @Test
-    public void testFindBuffer() {
-        System.out.println("findBuffer");
-        ArrayList<File> fileList = null;
-        int expResult = 0;
-        int result = FileCorrelation.findBuffer(fileList);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of dateTimeParser method, of class FileCorrelation.
      */
-    @Ignore
     @Test
     public void testDateTimeParser() {
         System.out.println("dateTimeParser");
-        String time = "";
+        String time = "2019-04-14T14-21-51-884303";
         LocalDateTime expResult = null;
         LocalDateTime result = FileCorrelation.dateTimeParser(time);
         assertEquals(expResult, result);

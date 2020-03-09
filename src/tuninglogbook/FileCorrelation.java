@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,7 @@ import java.util.Arrays;
 public class FileCorrelation {
     ArrayList<FileLogPair> fileLogPairs;
     ArrayList<File> fileList;
-    ArrayList<Log> notFound;
+    List<Log> notFound;
     int buffer;
     File directory;
     
@@ -38,7 +40,8 @@ public class FileCorrelation {
     }
     
     private void init() {
-        fileList = (ArrayList) Arrays.asList(directory.listFiles());
+        fileList = new ArrayList<>();
+        Collections.addAll(fileList, directory.listFiles());
 
         buffer = findBuffer(fileList);
 
@@ -98,6 +101,7 @@ public class FileCorrelation {
                 //fileList.remove(file);
                 return 0;
             }
+            
         }
         return -1;
     }
